@@ -45,7 +45,11 @@ as the output result.
 Running the tests
 -----------------
 
-Go to the folder "tests" and follow the below command.
+For testing, we have to ensure that the database
+**Home_Credit_Default_Predict.db** and the dataset **application_train.csv**
+are in the **tests** folder.
+
+Then go to the folder **tests** and follow the below command.
 
         python -m unittest test.TestTrainClassifier
         python -m unittest test.TestProcessData
