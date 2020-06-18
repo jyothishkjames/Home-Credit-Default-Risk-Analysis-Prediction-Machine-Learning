@@ -11,12 +11,11 @@ Prerequisites
 -------------
 The following libraries are used for the project:
 
-        scikit-learn==0.20.4
-        pandas==0.24.2
-        SQLAlchemy==1.3.17
-        numpy==1.16.6
-        setuptools==4.1.1
-        argparse==1.2.1
+        scikit-learn
+        pandas
+        SQLAlchemy
+        numpy
+        argparse
 
 
 Running the Code
