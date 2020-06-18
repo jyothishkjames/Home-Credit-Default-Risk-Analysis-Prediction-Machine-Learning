@@ -7,6 +7,8 @@ from sklearn.preprocessing import Imputer, PolynomialFeatures
 
 def load_data(train_filepath):
     """
+    Function to load the data from csv file into dataframe
+
     INPUT:
     train_filepath - file path to the csv file
 
@@ -21,6 +23,8 @@ def load_data(train_filepath):
 
 def clean_data(df):
     """
+    Function to clean the data
+
     INPUT:
     df - dataframe that has missing values
 
@@ -41,6 +45,8 @@ def clean_data(df):
 
 def polynomial_features(df):
     """
+    Function to generate polynomial features
+
     INPUT:
     df - dataframe from which we select the features to be transformed
 
@@ -71,11 +77,17 @@ def polynomial_features(df):
 
 
 def concat_data_frames(df_application_train, df_poly_features):
+    """
+    Function to concatenate dataframes
+    """
+
     return pd.concat([df_application_train, df_poly_features], axis=1)
 
 
 def create_dummy_df(df_num, df_cat, dummy_na):
     """
+    Function to convert categorical data to numerical data
+
     INPUT:
     num_df - pandas dataframe with numerical variables
     cat_df - pandas dataframe with categorical variables
@@ -101,6 +113,17 @@ def create_dummy_df(df_num, df_cat, dummy_na):
 
 
 def save_data(df, database_filepath):
+    """
+    Function to save the dataframe to a database
+
+    INPUT:
+    df - dataframe to save
+    database_filepath - path where the database has to saved
+
+    OUTPUT:
+    X - features
+    y - labels
+    """
     engine = create_engine('sqlite:///' + database_filepath + 'Home_Credit_Default_Predict.db')
     df.to_sql('Data_Table', engine, index=False)
 
