@@ -13,6 +13,16 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 def load_data(database_filepath):
+    """
+    Function to load the data from database
+
+    INPUT:
+    database_filepath - file path to the database
+
+    OUTPUT:
+    X - features
+    y - labels
+    """
     # load data from database
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql_table(table_name='Data_Table', con=engine)
@@ -24,6 +34,12 @@ def load_data(database_filepath):
 
 
 def build_model():
+    """
+    Function to build the machine learning pipeline
+
+    OUTPUT:
+    model - model that is build
+    """
     # build machine learning pipeline
     pipeline = Pipeline([
         ('scaler', MinMaxScaler()),
@@ -32,17 +48,26 @@ def build_model():
 
     parameters = {
         'scaler__feature_range': [(0, 1)],
-        'clf__n_estimators': [50, 100],
-        'clf__random_state': [50, 100],
-        'clf__max_features': ['log2', 'auto', 'sqrt']
+        'clf__n_estimators': [10],
+        'clf__random_state': [50],
+        'clf__class_weight': ['balanced'],
+        'clf__max_features': ['auto']  # 'log2', 'sqrt'
     }
 
-    grid = GridSearchCV(pipeline, param_grid=parameters)
+    model = GridSearchCV(pipeline, param_grid=parameters)
 
-    return grid
+    return model
 
 
 def evaluate_model(model, X_test, Y_test):
+    """
+    Function to evaluate the model
+
+    INPUT:
+    model - model to evaluate
+    X_test - test feature
+    Y_test - test label
+    """
     # predict on test data
     Y_pred = model.predict(X_test)
     # display classification report
@@ -53,6 +78,17 @@ def evaluate_model(model, X_test, Y_test):
 
 
 def save_model(model, model_filepath):
+    """
+    Function to save the model as a pickle file
+
+    INPUT:
+    model - model to save
+    model_filepath - path where the model has to saved
+
+    OUTPUT:
+    X - features
+    y - labels
+    """
     # Save to file the give path
     pkl_filename = model_filepath + "pickle_model.pkl"
     with open(pkl_filename, 'wb') as file:
