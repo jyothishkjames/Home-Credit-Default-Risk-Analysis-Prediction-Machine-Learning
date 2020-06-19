@@ -24,7 +24,7 @@ class TestTrainClassifier(unittest.TestCase):
 
 class TestProcessData(unittest.TestCase):
 
-    def test_load_clean_data(self):
+    def test_load_data(self):
         self.df = process_data.load_data(cwd + "/application_train.csv")
         self.assertIsInstance(self.df, pandas.core.frame.DataFrame)
 
