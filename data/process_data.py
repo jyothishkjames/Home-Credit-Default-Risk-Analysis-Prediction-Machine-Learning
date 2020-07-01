@@ -103,7 +103,7 @@ def create_dummy_df(df_num, df_cat, dummy_na):
 
     for col in df_cat.columns:
         try:
-            num_df = pd.concat([df_num, pd.get_dummies(df_cat[col], prefix=col,
+            df_num = pd.concat([df_num, pd.get_dummies(df_cat[col], prefix=col,
                                                        prefix_sep='_', drop_first=True,
                                                        dummy_na=dummy_na)], axis=1)
         except:
