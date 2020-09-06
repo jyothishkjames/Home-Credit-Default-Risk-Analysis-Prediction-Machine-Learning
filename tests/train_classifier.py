@@ -84,10 +84,6 @@ def save_model(model, model_filepath):
     INPUT:
     model - model to save
     model_filepath - path where the model has to saved
-
-    OUTPUT:
-    X - features
-    y - labels
     """
     # Save to file the give path
     pkl_filename = model_filepath + "pickle_model.pkl"
