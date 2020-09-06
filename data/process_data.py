@@ -95,7 +95,7 @@ def create_dummy_df(df_num, df_cat, dummy_na):
 
 
     OUTPUT:
-    df - a new dataframe that has the following characteristics:
+    df_num - a new dataframe that has the following characteristics:
             1. dummy columns for each of the categorical columns in cat_df
             2. if dummy_na is True - it also contains dummy columns for the NaN values
             3. Use a prefix of the column name with an underscore (_) for separating
@@ -119,11 +119,8 @@ def save_data(df, database_filepath):
     INPUT:
     df - dataframe to save
     database_filepath - path where the database has to saved
-
-    OUTPUT:
-    X - features
-    y - labels
     """
+
     engine = create_engine('sqlite:///' + database_filepath + 'Home_Credit_Default_Predict.db')
     df.to_sql('Data_Table', engine, index=False)
 
