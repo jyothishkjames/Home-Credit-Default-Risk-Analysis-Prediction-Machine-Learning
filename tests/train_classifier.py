@@ -85,7 +85,7 @@ def save_model(model, model_filepath):
     model - model to save
     model_filepath - path where the model has to saved
     """
-    # Save to file the give path
+    # Save file to the given path
     pkl_filename = model_filepath + "pickle_model.pkl"
     with open(pkl_filename, 'wb') as file:
         pickle.dump(model, file)
